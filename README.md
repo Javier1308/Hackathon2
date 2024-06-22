@@ -73,7 +73,7 @@ Para esta Hackathon, utilizaremos una API RESTful que proporciona información s
   - `username`: Nombre de usuario
   - `password`: Contraseña
 
-#### Crear un item (`POST /items` ) 🔐
+#### Crear un item (`POST /item` ) 🔐
 
 - Solo disponible para usuarios con rol `admin`.
 - `request body`: 
@@ -86,7 +86,7 @@ Para esta Hackathon, utilizaremos una API RESTful que proporciona información s
 - Todos los campos son requeridos.
 - Devuelve un `itemId` y un mensaje de éxito.
 
-#### Editar un item (`PUT /items`) 🔐
+#### Editar un item (`PUT /item`) 🔐
 - Solo disponible para usuarios con rol `admin`.
 - `request body`: 
   - `itemId`:String, id del item
@@ -124,7 +124,7 @@ Recibe los siguientes parametros de query:
   - `userId`:String, id del usuario
 - Devuelve un mensaje de éxito. Y el carrito del cliente se vacía.
 
-#### Agregar un item al carrito (`POST /cart`) 🔐
+#### Agregar un item al carrito (`PUT /cart`) 🔐
 
 - Se necesita el rol `client` para poder ejecutar esta operación.
 - `request body`: 
