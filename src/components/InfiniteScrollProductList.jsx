@@ -29,25 +29,29 @@ const InfiniteScrollProductList = () => {
     }, []);
 
     return (
-        <div>
+        <div className="infinite-scroll-container">
             <InfiniteScroll
                 dataLength={items.length}
                 next={fetchData}
                 hasMore={true}
-                loader={<p>Loading...</p>}
-                endMessage={<p>No more data to load.</p>}
+                loader={<p className="loading">Loading...</p>}
+                endMessage={<p className="end-message">No more data to load.</p>}
             >
-                <ul>
+                <ul className="item-list">
                     {items.map(item => (
-                        <div key={item.asin}>
-                            <li>{item.title}</li>
-                            <li>{item.isBestSeller}</li>
-                            <li>{item.stars}</li>
-                        </div>
+                        <li key={item.asin} className="item">
+                            <img src={item.image} alt={item.title} className="item-image" />
+                            <div className="item-details">
+                                <span className="item-title">{item.title}</span>
+                                {item.isBestSeller && <span className="item-bestseller">Best Seller</span>}
+                                <span className="item-price">${item.price}</span>
+                                <span className="item-stars">{item.stars} stars</span>
+                            </div>
+                        </li>
                     ))}
                 </ul>
             </InfiniteScroll>
-            {error && <p>Error: {error.message}</p>}
+            {error && <p className="error-message">Error: {error.message}</p>}
         </div>
     );
 }
