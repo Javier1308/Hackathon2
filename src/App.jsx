@@ -1,12 +1,20 @@
+<<<<<<< Updated upstream
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+=======
+import { useEffect, useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import './App.css'
+import Log from './pages/Log'
+>>>>>>> Stashed changes
 function App() {
   const [count, setCount] = useState(0)
 
   return (
+<<<<<<< Updated upstream
     <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
@@ -29,6 +37,17 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
+=======
+    <Router>
+      <Routes>
+        <Route path='*' element={<Navigate to="/login" replace />} />
+        <Route path='/login' element={<Log />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+      </Routes>
+
+    </Router>
+>>>>>>> Stashed changes
   )
 }
 
