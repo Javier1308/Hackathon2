@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchRegister } from '../service/api';
+import { registerUser } from '../service/api';
 import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
@@ -53,13 +53,13 @@ function RegisterForm() {
                 <div className="mb-4">
                     <div className="flex justify-between">
                         <button className="shadow bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
-                        onClick={() => handleChange({ target: { name: 'rol', value: 'cliente' } })}>
+                            onClick={() => handleChange({ target: { name: 'rol', value: 'cliente' } })}>
                             Cliente
-                            </button>
-                    <button className="shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  type="button"
-                    onClick={() => handleChange({ target: { name: 'rol', value: 'admin' } })} >
-                         Admin
-                         </button>
+                        </button>
+                        <button className="shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+                            onClick={() => handleChange({ target: { name: 'rol', value: 'admin' } })} >
+                            Admin
+                        </button>
                     </div>
                 </div>
                 <div className="mb-6">
