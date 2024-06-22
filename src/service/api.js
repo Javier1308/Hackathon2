@@ -2,8 +2,8 @@ import axios from 'axios';
 
 const API_BASE_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com';
 
-export const registerUser = (username, password, role) => {
-  return axios.post(`${API_BASE_URL}/auth/register`, { username, password, role });
+export const registerUser = (data) => {
+  return axios.post(`${API_BASE_URL}/auth/register`, { data});
 };
 
 export const loginUser = (username, password) => {
@@ -42,7 +42,7 @@ export const getItems = (limit, lastKey) => {
   return axios.get(`${API_BASE_URL}/items`, {
     params: { 
         limit : limit, 
-        lastKey:lastkey }
+        lastKey:lastKey }
   });
 };
 
