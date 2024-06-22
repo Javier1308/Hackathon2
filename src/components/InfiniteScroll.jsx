@@ -38,8 +38,12 @@ const InfiniteScroll = () => {
                 endMessage={<p>No more data to load.</p>}
             >
                 <ul>
-                    {items.map((item, index) => (
-                        <li key={index}>{item.name}</li>
+                    {items.map(item => (
+                        <div key={item.asin}>
+                            <li>{item.title}</li>
+                            <li>{item.isBestSeller}</li>
+                            <li>{item.stars}</li>
+                        </div>
                     ))}
                 </ul>
             </InfiniteScroll>
