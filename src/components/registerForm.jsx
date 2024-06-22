@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
+<<<<<<< HEAD
 import { registerUser } from '../service/api';
+=======
+import { fetchRegister } from '../service/api';
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
 import { useNavigate } from 'react-router-dom';
 
 function RegisterForm() {
@@ -28,7 +32,11 @@ function RegisterForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+<<<<<<< HEAD
             const userData = await registerUser(formData);
+=======
+            const userData = await fetchRegister(formData);
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
             console.log('Usuario registrado:', userData);
             navigate('/login');
         } catch (error) {
@@ -53,6 +61,7 @@ function RegisterForm() {
                 <div className="mb-4">
                     <div className="flex justify-between">
                         <button className="shadow bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+<<<<<<< HEAD
                             onClick={() => handleChange({ target: { name: 'rol', value: 'cliente' } })}>
                             Cliente
                         </button>
@@ -60,6 +69,15 @@ function RegisterForm() {
                             onClick={() => handleChange({ target: { name: 'rol', value: 'admin' } })} >
                             Admin
                         </button>
+=======
+                        onClick={() => handleChange({ target: { name: 'rol', value: 'cliente' } })}>
+                            Cliente
+                            </button>
+                    <button className="shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  type="button"
+                    onClick={() => handleChange({ target: { name: 'rol', value: 'admin' } })} >
+                         Admin
+                         </button>
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
                     </div>
                 </div>
                 <div className="mb-6">

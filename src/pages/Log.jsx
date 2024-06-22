@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { fetchLogin } from '../service/api';
 import { useNavigate } from 'react-router-dom';
 
+<<<<<<< HEAD
 const Log = () => {
+=======
+const Login = () => {
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -25,6 +29,7 @@ const Log = () => {
       <form onSubmit={handleSubmit} className="w-full max-w-xs">
         <div className="mb-4">
           <label htmlFor='email' className="block text-gray-700 text-sm font-bold mb-2">Email</label>
+<<<<<<< HEAD
           <input
             onChange={(e) => setEmail(e.target.value)}
             type='email' name='email' id='email' required
@@ -36,13 +41,31 @@ const Log = () => {
             onChange={(e) => setPassword(e.target.value)}
             type="password" name="password" id="password" required
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" />
+=======
+          <input 
+            onChange={(e) => setEmail(e.target.value)}
+            type='email' name='email' id='email' required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+        </div>
+        <div className="mb-6">
+          <label htmlFor='password' className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+          <input 
+            onChange={(e) => setPassword(e.target.value)}
+            type="password" name="password" id="password" required
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"/>
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
         </div>
         <div className="flex items-center justify-between">
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Login
           </button>
+<<<<<<< HEAD
           <button
             onClick={() => navigate('/register')}
+=======
+          <button 
+            onClick={() => navigate('/register')} 
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
             className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
             No tienes cuenta
           </button>
@@ -52,4 +75,8 @@ const Log = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Log;
+=======
+export default Login;
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a

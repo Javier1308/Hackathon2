@@ -15,11 +15,15 @@
     "react-dom": "^18.3.1",
 <<<<<<< Updated upstream
     "react-infinite-scroll-component": "^6.1.0"
+<<<<<<< HEAD
 =======
     "react-infinite-scroll-component": "^6.1.0",
     "react-router": "^6.23.1",
     "react-router-dom": "^6.23.1"
 >>>>>>> Stashed changes
+=======
+    "react-router": "^6.23.1"
+>>>>>>> e13d1a1cda09968fe668a61f5db6015e8cec086a
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

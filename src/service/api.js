@@ -1,48 +1,47 @@
-import axios from "axios"
-const BACKEND_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com'
+import axios from 'axios';
 
-export const fetchLogin = async (email, password) => {
-  const response = await axios.post(`${BACKEND_URL}/login`, { email, password });
-  return response;
-}
 
-export const registerUser = async (data) => {
+const API_BASE_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com';
+
+export const registerUser = (data) => {
   return axios.post(`${API_BASE_URL}/auth/register`, { data });
 };
 
-export const loginUser = async (username, password) => {
+export const loginUser = (username, password) => {
   return axios.post(`${API_BASE_URL}/auth/login`, { username, password });
 };
 
-export const createItem = async (itemData) => {
+export const createItem = (itemData) => {
   const token = localStorage.getItem('token');
   return axios.post(`${API_BASE_URL}/items`, itemData, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const editItem = async (itemData) => {
+export const editItem = (itemData) => {
   const token = localStorage.getItem('token');
   return axios.put(`${API_BASE_URL}/items`, itemData, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const deleteItem = async (itemId) => {
+export const deleteItem = (itemId) => {
   const token = localStorage.getItem('token');
   return axios.delete(`${API_BASE_URL}/item/${itemId}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const getItem = async (itemId) => {
+
+export const getItem = (itemId) => {
   const token = localStorage.getItem('token');
   return axios.get(`${API_BASE_URL}/item/${itemId}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const getItems = async (limit, lastKey) => {
+
+export const getItems = (limit, lastKey) => {
   return axios.get(`${API_BASE_URL}/items`, {
     params: {
       limit: limit,
@@ -51,14 +50,15 @@ export const getItems = async (limit, lastKey) => {
   });
 };
 
-export const addToCart = async (itemId, userId) => {
+export const addToCart = (itemId, userId) => {
   const token = localStorage.getItem('token');
   return axios.post(`${API_BASE_URL}/cart`, { itemId, userId }, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const deleteFromCart = async (itemId, userId) => {
+
+export const deleteFromCart = (itemId, userId) => {
   const token = localStorage.getItem('token');
   return axios.delete(`${API_BASE_URL}/cart`, {
     data: { itemId, userId },
@@ -66,14 +66,14 @@ export const deleteFromCart = async (itemId, userId) => {
   });
 };
 
-export const getCart = async (userId) => {
+export const getCart = (userId) => {
   const token = localStorage.getItem('token');
   return axios.get(`${API_BASE_URL}/cart/${userId}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 };
 
-export const buyCart = async (userId) => {
+export const buyCart = (userId) => {
   const token = localStorage.getItem('token');
   return axios.post(`${API_BASE_URL}/buy`, { userId }, {
     headers: { Authorization: `Bearer ${token}` }

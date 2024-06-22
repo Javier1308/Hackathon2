@@ -7,7 +7,6 @@ import ProductList from './components/ProductList';
 // import Cart from './components/Cart';
 import React from 'react';
 
-
 function App() {
   return (
     <Router>
