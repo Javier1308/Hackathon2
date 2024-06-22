@@ -1,10 +1,11 @@
 import axios from "axios"
-const BACKEND_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com/'
+const BACKEND_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com'
 
 export const fetchLogin = async (email, password) => {
     const response = await axios.post(`${BACKEND_URL}/login`, { email, password })
     return response
 }
+
 export const fetchPaginacion = async (limit, lastKey) => {
     const token = localStorage.getItem('token');
     try {
