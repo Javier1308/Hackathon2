@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 import fetchPaginacion from '../service/api';
 
-const InfiniteScroll = () => {
+const InfiniteScrollProductList = () => {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -52,4 +52,4 @@ const InfiniteScroll = () => {
     );
 }
 
-export default InfiniteScroll
+export default InfiniteScrollProductList
