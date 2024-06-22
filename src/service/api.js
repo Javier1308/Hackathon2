@@ -1,21 +1,31 @@
 import axios from "axios"
 const BACKEND_URL = 'https://reqres.in/api'
 
-export const fetchLogin = async(email,password) =>{
-    const response = await axios.post(`${BACKEND_URL}/login`,{email, password})
+export const fetchLogin = async (email, password) => {
+    const response = await axios.post(`${BACKEND_URL}/login`, { email, password })
     return response
 }
-export const fetchPaginacion = async() => {
-    const response = await axios.get(`${BACKEND_URL}users?page=2&per_page=2`, {
+export const fetchPaginacion = async () => {
+    const token = localStorage.getItem('token');
+    try {
+        const response = await axios.get(`${BACKEND_URL}/api/products`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            params: {
+                skip: page,
+                limit: size
+            }
+        },)
+
+        return response.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const fetchDelete = async (id) => {
+    const response = await axios.delete(`${BACKEND_URL}/users/${id}`, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-    })
-    return response
-}
-export const fetchDelete = async(id) => {
-    const response = await axios.delete(`${BACKEND_URL}/users/${id}`,{
-        headers:{
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
     })
@@ -28,7 +38,7 @@ export const fetchGetUserById = async (userId) => {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.error('Error al obtener usuario por ID:', error);
         throw error;
@@ -40,7 +50,7 @@ export const fetchRegister = async (userData) => {
         return response.data;
     } catch (error) {
         console.error('Error en registro:', error);
-        throw error; 
+        throw error;
     }
 };
 export const fetchPostProduct = async (Data) => {
@@ -50,10 +60,10 @@ export const fetchPostProduct = async (Data) => {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.error('Error al crear producto:', error);
-        throw error; 
+        throw error;
     }
 };
 export const fetchPutProduct = async (productId, updatedProductData) => {
@@ -63,7 +73,7 @@ export const fetchPutProduct = async (productId, updatedProductData) => {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
             },
         });
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.error('Error al actualizar producto:', error);
         throw error;
@@ -78,13 +88,13 @@ export const fetchPatchProductName = async (productId, updatedName) => {
         }, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
-               
+
             },
         });
-        return response.data; 
+        return response.data;
     } catch (error) {
         console.error('Error al actualizar nombre del producto:', error);
-        throw error; 
-        
+        throw error;
+
     }
 };
