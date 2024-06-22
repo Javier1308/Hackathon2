@@ -2,100 +2,80 @@ import axios from "axios"
 const BACKEND_URL = 'https://cepnq6rjbk.execute-api.us-east-1.amazonaws.com'
 
 export const fetchLogin = async (email, password) => {
-    const response = await axios.post(`${BACKEND_URL}/login`, { email, password });
-    return response;
+  const response = await axios.post(`${BACKEND_URL}/login`, { email, password });
+  return response;
 }
 
-export const fetchPaginacion = async (limit, lastKey) => {
-    const token = localStorage.getItem('token');
-    try {
-        const response = await axios.get(`${BACKEND_URL}/items`, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-            params: {
-                limit: page,
-                lastKey: size
-            }
-        },)
-
-        return response.data;
-    } catch (error) {
-        console.log(error)
-    }
-}
-export const fetchDelete = async (id) => {
-    const response = await axios.delete(`${BACKEND_URL}/users/${id}`, {
-        headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-        },
-    })
-    return response
-}
-export const fetchGetUserById = async (userId) => {
-    try {
-        const response = await axios.get(`${BACKEND_URL}/users/${userId}`, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error al obtener usuario por ID:', error);
-        throw error;
-    }
-};
-export const fetchRegister = async (userData) => {
-    try {
-        const response = await axios.post(`${BACKEND_URL}/register`, userData);
-        return response.data;
-    } catch (error) {
-        console.error('Error en registro:', error);
-        throw error;
-    }
-};
-export const fetchPostProduct = async (Data) => {
-    try {
-        const response = await axios.post(`${BACKEND_URL}/products`, Data, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error al crear producto:', error);
-        throw error;
-    }
-};
-export const fetchPutProduct = async (productId, updatedProductData) => {
-    try {
-        const response = await axios.put(`${BACKEND_URL}/products/${productId}`, updatedProductData, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error al actualizar producto:', error);
-        throw error;
-    }
+export const registerUser = async (data) => {
+  return axios.post(`${API_BASE_URL}/auth/register`, { data });
 };
 
+export const loginUser = async (username, password) => {
+  return axios.post(`${API_BASE_URL}/auth/login`, { username, password });
+};
 
-export const fetchPatchProductName = async (productId, updatedName) => {
-    try {
-        const response = await axios.patch(`${BACKEND_URL}/products/${productId}`, {
-            name: updatedName
-        }, {
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+export const createItem = async (itemData) => {
+  const token = localStorage.getItem('token');
+  return axios.post(`${API_BASE_URL}/items`, itemData, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
 
-            },
-        });
-        return response.data;
-    } catch (error) {
-        console.error('Error al actualizar nombre del producto:', error);
-        throw error;
+export const editItem = async (itemData) => {
+  const token = localStorage.getItem('token');
+  return axios.put(`${API_BASE_URL}/items`, itemData, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
 
+export const deleteItem = async (itemId) => {
+  const token = localStorage.getItem('token');
+  return axios.delete(`${API_BASE_URL}/item/${itemId}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+export const getItem = async (itemId) => {
+  const token = localStorage.getItem('token');
+  return axios.get(`${API_BASE_URL}/item/${itemId}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+export const getItems = async (limit, lastKey) => {
+  return axios.get(`${API_BASE_URL}/items`, {
+    params: {
+      limit: limit,
+      lastKey: lastKey
     }
+  });
+};
+
+export const addToCart = async (itemId, userId) => {
+  const token = localStorage.getItem('token');
+  return axios.post(`${API_BASE_URL}/cart`, { itemId, userId }, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+export const deleteFromCart = async (itemId, userId) => {
+  const token = localStorage.getItem('token');
+  return axios.delete(`${API_BASE_URL}/cart`, {
+    data: { itemId, userId },
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+export const getCart = async (userId) => {
+  const token = localStorage.getItem('token');
+  return axios.get(`${API_BASE_URL}/cart/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
+};
+
+export const buyCart = async (userId) => {
+  const token = localStorage.getItem('token');
+  return axios.post(`${API_BASE_URL}/buy`, { userId }, {
+    headers: { Authorization: `Bearer ${token}` }
+  });
 };
