@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function RegisterForm() {
     const [formData, setFormData] = useState({
         username: '',
-        email: '',
+        rol: '',
         password: ''
     });
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ function RegisterForm() {
         try {
             const userData = await fetchRegister(formData);
             console.log('Usuario registrado:', userData);
-            navigate('/Log');
+            navigate('/login');
         } catch (error) {
             console.error('Error en registro:', error);
         }
@@ -51,15 +51,16 @@ function RegisterForm() {
                     />
                 </div>
                 <div className="mb-4">
-                    <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="email"
-                        name="email"
-                        placeholder="Correo electrónico"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
+                    <div className="flex justify-between">
+                        <button className="shadow bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"
+                        onClick={() => handleChange({ target: { name: 'rol', value: 'cliente' } })}>
+                            Cliente
+                            </button>
+                    <button className="shadow bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"  type="button"
+                    onClick={() => handleChange({ target: { name: 'rol', value: 'admin' } })} >
+                         Admin
+                         </button>
+                    </div>
                 </div>
                 <div className="mb-6">
                     <input
